@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Seat Selection</title>
+</head>
+<body>
+<h2>Select Seat – {{ flight.flight_number }}</h2>
+
+<div class="seat-grid">
+{% for seat in seats %}
+    {% if seat.is_available %}
+        <a class="seat available" href="{% url 'booking_confirmation' seat.id %}">
+            {{ seat.seat_number }}
+        </a>
+    {% else %}
+        <span class="seat unavailable">
+            {{ seat.seat_number }}
+        </span>
+    {% endif %}
+{% endfor %}
+</div>
+
+<p class="legend">
+    <span class="available-box"></span> Available
+    <span class="unavailable-box"></span> Unavailable
+</p>
+{% endblock %}
+</body>
+</html>

@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Booking Confirmed</title>
+</head>
+<body>
+<div class="card">
+  <h2>Booking Confirmed ✅</h2>
+  <p><strong>Flight:</strong> {{ booking.flight }}</p>
+  <p><strong>Seat:</strong> {{ booking.seat.seat_number }}</p>
+  <p><strong>Status:</strong> {{ booking.status }}</p>
+
+   <a class="btn" href="{% url 'cancel_booking' booking.id %}">
+      Cancel Booking
+  </a>
+</div>
+{% endblock %}
+</body>
+</html>
